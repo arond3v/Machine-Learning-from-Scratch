@@ -1,5 +1,5 @@
 import numpy as np
-class LinearRegression:
+class Regression:
   
     def modify(self,X):
         # y = m*x + c is y = m*x +c*1 so a column of ones is needed 
@@ -7,7 +7,7 @@ class LinearRegression:
         ones = ones.reshape(-1,1) # remove the next line  if it's for linear regression but it's gonna be used for other regression
         return np.append(ones,X,axis = 1)
 
-    def fit(self,X,Y,no_of_iter = 1000,alpha = 0.001,):
+    def fit(self,X,Y,no_of_iter = 10000,alpha = 0.001):
         X = self.modify(X)
         self.theta = np.random.randn(X.shape[1])
         # gradient descent 
@@ -20,3 +20,16 @@ class LinearRegression:
     def predict(self,X):
         X = self.modify(X)
         return np.matmul(X,self.theta)
+
+    # for polynomial regression
+    def polynomial_feature(self,X,degree = 1):
+        temp = X
+        for _ in range(degree):
+            for j in range(X.shape[0]):
+                temp[j][0] = temp[j][0] * X[j][0]
+            X = np.append(X,temp,axis = 1)
+        return X
+
+    def poly_fit(self,X,Y,no_of_iter = 10000,alpha = 0.001):
+        self.fit(self.polynomial_feature(X),Y,no_of_iter,alpha)
+
