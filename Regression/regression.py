@@ -33,3 +33,5 @@ class Regression:
     def poly_fit(self,X,Y,no_of_iter = 10000,alpha = 0.001):
         self.fit(self.polynomial_feature(X),Y,no_of_iter,alpha)
 
+    def poly_predict(self,X):
+        self.predict(self.polynomial_feature(X))
