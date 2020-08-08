@@ -1,3 +1,5 @@
+For Linear Multiple and Polynomial Regression
+
 Cost_Funcion = (1/N)*sum(Y_pred - Y_i) //for i in N
 partial derivation of Cost_funtion with coefficient = (2/N)*sum((Y_pred - Y_i)*coefficient)
 
