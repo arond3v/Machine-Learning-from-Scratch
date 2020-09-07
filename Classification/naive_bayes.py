@@ -2,7 +2,7 @@ import numpy as np
 
 class NB:
     
-    def split_class(self,X,Y):
+    def _split_class(self,X,Y):
         no_of_par = X.shape[1]
         split = []
         class_type = []
@@ -22,7 +22,7 @@ class NB:
             split[i] = split[i].reshape(-1,no_of_par)
         return split,class_type
     def fit(self,X,Y):
-        data,self.class_type = self.split_class(X,Y)
+        data,self.class_type = self._split_class(X,Y)
         self.standard_deviation = []
         self.probability = []
         deviation = 0
